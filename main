@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberShield Pro | Elite Cybersecurity</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1030876896435364" crossorigin="anonymous"></script>
+
+<style>
+:root {
+  --neon: #00ffe7;
+  --neon2: #ff003c;
+  --neon3: #7b00ff;
+  --bg: #020810;
+  --bg2: #040f1a;
+  --card: rgba(0,255,231,0.04);
+  --text: #c8e8ff;
+  --muted: #4a7fa0;
+  --white: #ffffff;
+  --font-head: 'Orbitron', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.7;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CUSTOM CURSOR */
+#cursor{position:fixed;width:18px;height:18px;border:2px solid var(--neon);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.1s;mix-blend-mode:screen;}
+#cursor-dot{position:fixed;width:5px;height:5px;background:var(--neon);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+
+/* CANVAS BG */
+#matrix-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.13;pointer-events:none;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:18px 5%;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(2,8,16,0.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,255,231,0.12);
+}
+.logo{
+  font-family:var(--font-head);
+  font-size:1.3rem;
+  font-weight:900;
+  color:var(--neon);
+  text-shadow:0 0 20px var(--neon);
+  letter-spacing:2px;
+}
+.logo span{color:var(--neon2);}
+nav ul{list-style:none;display:flex;gap:32px;}
+nav ul a{
+  color:var(--text);
+  text-decoration:none;
+  font-family:var(--font-mono);
+  font-size:0.82rem;
+  letter-spacing:1px;
+  transition:color 0.3s;
+  position:relative;
+}
+nav ul a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--neon);transition:width 0.3s;
+}
+nav ul a:hover{color:var(--neon);}
+nav ul a:hover::after{width:100%;}
+.nav-cta{
+  background:transparent;
+  border:1px solid var(--neon);
+  color:var(--neon)!important;
+  padding:8px 20px;
+  border-radius:3px;
+  font-family:var(--font-head)!important;
+  font-size:0.75rem!important;
+  transition:background 0.3s!important;
+}
+.nav-cta:hover{background:rgba(0,255,231,0.12)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:26px;height:2px;background:var(--neon);}
+
+/* SECTIONS */
+section{position:relative;z-index:1;}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 5% 80px;
+  overflow:hidden;
+}
+.hero-bg-glow{
+  position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(0,255,231,0.07) 0%, transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-block;
+  border:1px solid rgba(0,255,231,0.4);
+  color:var(--neon);
+  font-family:var(--font-mono);
+  font-size:0.75rem;
+  letter-spacing:3px;
+  padding:6px 18px;
+  border-radius:2px;
+  margin-bottom:28px;
+  animation:fadeInUp 0.8s ease both;
+}
+.hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.5rem,6vw,5.5rem);
+  font-weight:900;
+  line-height:1.05;
+  margin-bottom:24px;
+  animation:fadeInUp 1s ease 0.2s both;
+}
+.hero h1 .line1{color:var(--white);}
+.hero h1 .line2{
+  color:transparent;
+  -webkit-text-stroke:1px var(--neon);
+  text-shadow:0 0 40px rgba(0,255,231,0.3);
+}
+.hero h1 .line3{
+  background:linear-gradient(90deg,var(--neon),var(--neon3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{
+  max-width:600px;
+  margin:0 auto 40px;
+  color:var(--muted);
+  font-size:1.1rem;
+  font-weight:300;
+  animation:fadeInUp 1s ease 0.4s both;
+}
+.hero-btns{
+  display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
+  animation:fadeInUp 1s ease 0.6s both;
+}
+.btn-primary{
+  background:var(--neon);
+  color:#000;
+  padding:14px 36px;
+  border:none;border-radius:3px;
+  font-family:var(--font-head);
+  font-size:0.82rem;
+  font-weight:700;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:all 0.3s;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 0 30px rgba(0,255,231,0.4);
+}
+.btn-primary:hover{box-shadow:0 0 60px rgba(0,255,231,0.7);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;
+  color:var(--neon);
+  padding:14px 36px;
+  border:1px solid var(--neon);
+  border-radius:3px;
+  font-family:var(--font-head);
+  font-size:0.82rem;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:all 0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn-outline:hover{background:rgba(0,255,231,0.08);}
+
+/* STATS BAR */
+.stats-bar{
+  background:rgba(0,255,231,0.04);
+  border-top:1px solid rgba(0,255,231,0.1);
+  border-bottom:1px solid rgba(0,255,231,0.1);
+  padding:30px 5%;
+  display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;
+  z-index:1;position:relative;
+}
+.stat-item{text-align:center;}
+.stat-num{
+  font-family:var(--font-head);
+  font-size:2rem;
+  color:var(--neon);
+  text-shadow:0 0 20px var(--neon);
+  display:block;
+}
+.stat-label{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);letter-spacing:2px;}
+
+/* VIDEO SECTION */
+#video-section{padding:100px 5%;text-align:center;}
+.section-tag{
+  font-family:var(--font-mono);
+  font-size:0.75rem;
+  color:var(--neon);
+  letter-spacing:3px;
+  display:block;
+  margin-bottom:12px;
+}
+.section-title{
+  font-family:var(--font-head);
+  font-size:clamp(1.8rem,4vw,3rem);
+  color:var(--white);
+  margin-bottom:16px;
+  line-height:1.2;
+}
+.section-title span{color:var(--neon);}
+.section-sub{color:var(--muted);max-width:600px;margin:0 auto 50px;font-size:1rem;}
+.video-wrapper{
+  max-width:900px;
+  margin:0 auto;
+  border:1px solid rgba(0,255,231,0.2);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(0,255,231,0.08);
+  position:relative;
+}
+.video-wrapper iframe{width:100%;height:500px;display:block;border:none;}
+.video-overlay-bar{
+  background:rgba(0,255,231,0.06);
+  border-top:1px solid rgba(0,255,231,0.2);
+  padding:14px 24px;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:0.78rem;color:var(--neon);
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--neon);animation:blink 1.5s infinite;}
+
+/* TOPICS / COURSES */
+#topics{padding:100px 5%;}
+.topics-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:24px;
+  margin-top:50px;
+}
+.topic-card{
+  background:var(--card);
+  border:1px solid rgba(0,255,231,0.1);
+  border-radius:6px;
+  padding:32px;
+  transition:all 0.4s;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.topic-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  transform:scaleX(0);transition:transform 0.4s;
+}
+.topic-card:hover{
+  border-color:rgba(0,255,231,0.35);
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,255,231,0.08);
+}
+.topic-card:hover::before{transform:scaleX(1);}
+.topic-icon{
+  font-size:2rem;margin-bottom:16px;display:block;
+  filter:drop-shadow(0 0 10px var(--neon));
+}
+.topic-card h3{
+  font-family:var(--font-head);
+  font-size:1rem;
+  color:var(--white);
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+.topic-card p{color:var(--muted);font-size:0.95rem;}
+.topic-level{
+  display:inline-block;
+  margin-top:16px;
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  padding:3px 12px;
+  border-radius:2px;
+  letter-spacing:1px;
+}
+.level-beg{background:rgba(0,255,100,0.1);color:#00ff64;border:1px solid rgba(0,255,100,0.3);}
+.level-int{background:rgba(255,165,0,0.1);color:#ffa500;border:1px solid rgba(255,165,0,0.3);}
+.level-adv{background:rgba(255,0,60,0.1);color:var(--neon2);border:1px solid rgba(255,0,60,0.3);}
+
+/* THREAT TICKER */
+.threat-ticker{
+  background:rgba(255,0,60,0.05);
+  border-top:1px solid rgba(255,0,60,0.2);
+  border-bottom:1px solid rgba(255,0,60,0.2);
+  padding:12px 0;
+  overflow:hidden;
+  position:relative;
+}
+.ticker-inner{
+  display:flex;
+  gap:60px;
+  white-space:nowrap;
+  animation:ticker 30s linear infinite;
+  font-family:var(--font-mono);
+  font-size:0.8rem;
+  color:var(--neon2);
+}
+.ticker-item::before{content:'⚠ ';color:var(--neon2);}
+
+/* IMAGE GALLERY */
+#gallery{padding:100px 5%;}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,220px);
+  gap:12px;
+  margin-top:50px;
+}
+.gal-item{
+  border-radius:6px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(0,255,231,0.1);
+}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
+.gal-item:hover img{transform:scale(1.08);}
+.gal-item:first-child{grid-row:span 2;}
+.gal-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(2,8,16,0.8),transparent);
+  opacity:0;transition:opacity 0.3s;
+  display:flex;align-items:flex-end;padding:16px;
+}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-overlay span{
+  font-family:var(--font-mono);font-size:0.78rem;color:var(--neon);letter-spacing:1px;
+}
+
+/* AUDIO SECTION */
+#audio-section{
+  padding:80px 5%;
+  background:rgba(0,255,231,0.02);
+  border-top:1px solid rgba(0,255,231,0.07);
+  border-bottom:1px solid rgba(0,255,231,0.07);
+}
+.audio-player{
+  max-width:700px;
+  margin:40px auto 0;
+  background:rgba(0,255,231,0.04);
+  border:1px solid rgba(0,255,231,0.2);
+  border-radius:8px;
+  padding:30px;
+}
+.ap-title{
+  font-family:var(--font-head);
+  color:var(--white);
+  margin-bottom:6px;
+  font-size:1rem;
+}
+.ap-sub{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);}
+.ap-controls{
+  margin-top:20px;
+  display:flex;align-items:center;gap:16px;
+}
+.ap-btn{
+  width:46px;height:46px;
+  border-radius:50%;
+  border:1px solid var(--neon);
+  background:rgba(0,255,231,0.08);
+  color:var(--neon);
+  font-size:1.1rem;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;
+}
+.ap-btn:hover{background:rgba(0,255,231,0.2);box-shadow:0 0 20px rgba(0,255,231,0.3);}
+.ap-bar{
+  flex:1;height:4px;background:rgba(0,255,231,0.15);border-radius:2px;
+  position:relative;cursor:pointer;overflow:hidden;
+}
+.ap-progress{
+  height:100%;background:linear-gradient(90deg,var(--neon),var(--neon3));
+  width:35%;border-radius:2px;transition:width 0.3s;
+}
+.ap-time{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);}
+audio{display:none;}
+
+/* TOOLS SECTION */
+#tools{padding:100px 5%;}
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+  margin-top:50px;
+}
+.tool-item{
+  border:1px solid rgba(0,255,231,0.08);
+  border-radius:4px;
+  padding:20px;
+  display:flex;align-items:center;gap:14px;
+  transition:all 0.3s;
+  background:var(--card);
+}
+.tool-item:hover{
+  border-color:rgba(0,255,231,0.3);
+  background:rgba(0,255,231,0.06);
+}
+.tool-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--neon);
+  flex-shrink:0;
+  box-shadow:0 0 10px var(--neon);
+}
+.tool-name{font-family:var(--font-mono);font-size:0.85rem;color:var(--text);}
+
+/* TERMINAL */
+#terminal-section{padding:80px 5%;text-align:center;}
+.terminal{
+  max-width:780px;
+  margin:40px auto 0;
+  background:#020810;
+  border:1px solid rgba(0,255,231,0.2);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(0,255,231,0.06);
+}
+.terminal-bar{
+  background:rgba(0,255,231,0.06);
+  padding:10px 16px;
+  display:flex;align-items:center;gap:8px;
+}
+.tb-dot{width:12px;height:12px;border-radius:50%;}
+.tb-dot.red{background:#ff5f56;}
+.tb-dot.yellow{background:#ffbd2e;}
+.tb-dot.green{background:#27c93f;}
+.terminal-body{padding:24px;text-align:left;}
+.terminal-body pre{
+  font-family:var(--font-mono);
+  font-size:0.85rem;
+  color:var(--neon);
+  line-height:1.8;
+  white-space:pre-wrap;
+}
+.t-cmd{color:var(--text);}
+.t-out{color:#4a7fa0;}
+.t-warn{color:var(--neon2);}
+.t-success{color:#00ff64;}
+.cursor-blink{animation:blink 1s infinite;color:var(--neon);}
+
+/* NEWSLETTER */
+#newsletter{
+  padding:100px 5%;
+  text-align:center;
+  background:linear-gradient(135deg,rgba(0,255,231,0.03),rgba(123,0,255,0.03));
+  border-top:1px solid rgba(0,255,231,0.07);
+}
+.nl-form{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  max-width:500px;margin:30px auto 0;
+}
+.nl-input{
+  flex:1;min-width:200px;
+  background:rgba(0,255,231,0.05);
+  border:1px solid rgba(0,255,231,0.2);
+  border-radius:3px;
+  padding:13px 18px;
+  color:var(--text);
+  font-family:var(--font-mono);
+  font-size:0.88rem;
+  outline:none;
+}
+.nl-input:focus{border-color:var(--neon);}
+.nl-input::placeholder{color:var(--muted);}
+
+/* SOCIAL / FOLLOW */
+#follow{
+  padding:80px 5%;
+  text-align:center;
+  border-top:1px solid rgba(0,255,231,0.07);
+}
+.social-cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+.social-card{
+  border:1px solid rgba(0,255,231,0.15);
+  border-radius:8px;
+  padding:32px 48px;
+  text-decoration:none;
+  transition:all 0.4s;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  background:var(--card);
+  min-width:200px;
+}
+.social-card:hover{
+  border-color:var(--neon);
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,255,231,0.1);
+}
+.social-icon{font-size:2.5rem;}
+.social-name{font-family:var(--font-head);font-size:0.85rem;letter-spacing:2px;color:var(--white);}
+.social-handle{font-family:var(--font-mono);font-size:0.75rem;color:var(--neon);}
+.yt-card{border-color:rgba(255,0,0,0.2);}
+.yt-card:hover{border-color:#ff0000;box-shadow:0 20px 60px rgba(255,0,0,0.12);}
+.fb-card{border-color:rgba(24,119,242,0.2);}
+.fb-card:hover{border-color:#1877f2;box-shadow:0 20px 60px rgba(24,119,242,0.12);}
+
+/* ADSENSE */
+.ad-banner{
+  padding:20px 5%;
+  text-align:center;
+  overflow:hidden;
+}
+.ad-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--muted);letter-spacing:2px;margin-bottom:8px;display:block;}
+
+/* FOOTER */
+footer{
+  background:rgba(2,5,12,0.95);
+  border-top:1px solid rgba(0,255,231,0.1);
+  padding:60px 5% 30px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr repeat(3,1fr);
+  gap:40px;
+  margin-bottom:50px;
+}
+.footer-brand .logo{display:inline-block;margin-bottom:16px;font-size:1.1rem;}
+.footer-brand p{color:var(--muted);font-size:0.9rem;max-width:280px;}
+.footer-col h4{
+  font-family:var(--font-head);
+  font-size:0.78rem;
+  letter-spacing:2px;
+  color:var(--neon);
+  margin-bottom:18px;
+}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:color 0.3s;
+  font-family:var(--font-body);
+}
+.footer-col ul a:hover{color:var(--neon);}
+.footer-bottom{
+  border-top:1px solid rgba(0,255,231,0.07);
+  padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+.footer-bottom p{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--neon);}
+
+/* MODAL PAGES */
+.modal{
+  display:none;
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(2,8,16,0.97);
+  backdrop-filter:blur(10px);
+  overflow-y:auto;
+  padding:80px 5% 60px;
+}
+.modal.active{display:block;}
+.modal-close{
+  position:fixed;top:24px;right:5%;
+  background:transparent;
+  border:1px solid rgba(0,255,231,0.3);
+  color:var(--neon);
+  font-family:var(--font-mono);
+  font-size:0.8rem;
+  padding:8px 16px;
+  cursor:pointer;
+  z-index:10000;
+  transition:all 0.3s;
+}
+.modal-close:hover{background:rgba(0,255,231,0.1);}
+.modal-content{max-width:800px;margin:0 auto;}
+.modal-content h1{
+  font-family:var(--font-head);
+  color:var(--neon);
+  font-size:2rem;
+  margin-bottom:8px;
+}
+.modal-content .modal-date{font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);margin-bottom:32px;display:block;}
+.modal-content h2{
+  font-family:var(--font-head);
+  color:var(--white);
+  font-size:1rem;
+  margin:28px 0 10px;
+  letter-spacing:1px;
+}
+.modal-content p,.modal-content li{color:var(--text);font-size:1rem;line-height:1.8;}
+.modal-content ul{padding-left:20px;margin:10px 0;}
+.modal-content a{color:var(--neon);}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes ticker{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@keyframes blink{
+  0%,100%{opacity:1;}50%{opacity:0;}
+}
+@keyframes scanline{
+  0%{transform:translateY(-100%);}
+  100%{transform:translateY(100vh);}
+}
+@keyframes glitch{
+  0%,100%{clip-path:inset(0 0 100% 0);}
+  10%{clip-path:inset(10% 0 70% 0);}
+  30%{clip-path:inset(50% 0 30% 0);}
+  50%{clip-path:inset(80% 0 5% 0);}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav ul{display:none;}
+  .hamburger{display:flex;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gal-item:first-child{grid-row:auto;}
+}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .video-wrapper iframe{height:260px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- Matrix Canvas -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- Scanline Effect -->
+<div style="position:fixed;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,var(--neon),transparent);animation:scanline 4s linear infinite;z-index:998;opacity:0.15;pointer-events:none;"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">CYBER<span>SHIELD</span></div>
+  <ul id="nav-menu">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#topics">Courses</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#follow">Community</a></li>
+    <li><a href="#" onclick="openModal('contact')" style="cursor:pointer;">Contact</a></li>
+    <li><a href="#newsletter" class="nav-cta">GET STARTED</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div>
+    <div class="hero-badge">// ELITE CYBERSECURITY PLATFORM v2.0</div>
+    <h1>
+      <div class="line1">DEFEND.</div>
+      <div class="line2">DETECT.</div>
+      <div class="line3">DOMINATE.</div>
+    </h1>
+    <p class="hero-sub">Master ethical hacking, penetration testing, and digital forensics. Learn to think like an attacker. Protect like a guardian.</p>
+    <div class="hero-btns">
+      <a href="#topics" class="btn-primary">EXPLORE COURSES</a>
+      <a href="#video-section" class="btn-outline">WATCH INTRO</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar reveal">
+  <div class="stat-item"><span class="stat-num" data-target="50000">0</span><span class="stat-label">STUDENTS</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="200">0</span><span class="stat-label">TUTORIALS</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="150">0</span><span class="stat-label">TOOLS COVERED</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="99">0</span><span class="stat-label">% SUCCESS RATE</span></div>
+</div>
+
+<!-- THREAT TICKER -->
+<div class="threat-ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">CRITICAL: Log4Shell vulnerability active</span>
+    <span class="ticker-item">ALERT: New ransomware strain detected</span>
+    <span class="ticker-item">WARNING: Zero-day in popular CMS</span>
+    <span class="ticker-item">UPDATE: Patch Tuesday released</span>
+    <span class="ticker-item">THREAT: APT group targeting finance</span>
+    <span class="ticker-item">ADVISORY: Social engineering campaign</span>
+    <span class="ticker-item">CRITICAL: Log4Shell vulnerability active</span>
+    <span class="ticker-item">ALERT: New ransomware strain detected</span>
+    <span class="ticker-item">WARNING: Zero-day in popular CMS</span>
+    <span class="ticker-item">UPDATE: Patch Tuesday released</span>
+    <span class="ticker-item">THREAT: APT group targeting finance</span>
+    <span class="ticker-item">ADVISORY: Social engineering campaign</span>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section id="video-section">
+  <div class="reveal">
+    <span class="section-tag">// FEATURED CONTENT</span>
+    <h2 class="section-title">Learn From The <span>Best</span></h2>
+    <p class="section-sub">Watch our featured cybersecurity tutorials and walkthroughs. Real skills, real scenarios, real results.</p>
+  </div>
+  <div class="video-wrapper reveal">
+    <iframe src="https://www.youtube.com/embed/3Kq1MIfTWCE?si=abc" title="Cybersecurity Tutorial" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <div class="video-overlay-bar">
+      <div class="dot"></div>
+      <span>LIVE TUTORIAL // Ethical Hacking Fundamentals — CyberShield Academy</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS / COURSES -->
+<section id="topics">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">// CURRICULUM</span>
+    <h2 class="section-title">Cyber<span>Security</span> Courses</h2>
+    <p class="section-sub">From beginner basics to advanced red team operations. Every course is hands-on and battle-tested.</p>
+  </div>
+  <div class="topics-grid">
+    <div class="topic-card reveal">
+      <span class="topic-icon">🕵️</span>
+      <h3>ETHICAL HACKING</h3>
+      <p>Master penetration testing methodologies used by professional security researchers worldwide.</p>
+      <span class="topic-level level-beg">BEGINNER</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🔒</span>
+      <h3>NETWORK SECURITY</h3>
+      <p>Firewalls, IDS/IPS, VPNs, packet analysis with Wireshark, and advanced network hardening.</p>
+      <span class="topic-level level-int">INTERMEDIATE</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">💀</span>
+      <h3>MALWARE ANALYSIS</h3>
+      <p>Reverse-engineer malware in sandboxed environments. Understand how threats operate at the binary level.</p>
+      <span class="topic-level level-adv">ADVANCED</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🌐</span>
+      <h3>WEB APP SECURITY</h3>
+      <p>OWASP Top 10, SQL injection, XSS, CSRF, SSRF, API security testing and bug bounty hunting.</p>
+      <span class="topic-level level-int">INTERMEDIATE</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🔑</span>
+      <h3>CRYPTOGRAPHY</h3>
+      <p>Symmetric & asymmetric encryption, hashing, PKI, TLS/SSL, and implementing secure protocols.</p>
+      <span class="topic-level level-int">INTERMEDIATE</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🧠</span>
+      <h3>SOCIAL ENGINEERING</h3>
+      <p>Phishing, pretexting, vishing, and defending against human-layer attacks in organizations.</p>
+      <span class="topic-level level-beg">BEGINNER</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🖥️</span>
+      <h3>DIGITAL FORENSICS</h3>
+      <p>Evidence collection, memory forensics, file recovery, and incident response procedures.</p>
+      <span class="topic-level level-adv">ADVANCED</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">☁️</span>
+      <h3>CLOUD SECURITY</h3>
+      <p>AWS, Azure, and GCP security. IAM misconfigurations, S3 bucket exposure, cloud pentesting.</p>
+      <span class="topic-level level-adv">ADVANCED</span>
+    </div>
+    <div class="topic-card reveal">
+      <span class="topic-icon">🤖</span>
+      <h3>AI & CYBER DEFENSE</h3>
+      <p>Using machine learning for anomaly detection, threat intelligence, and automated incident response.</p>
+      <span class="topic-level level-adv">ADVANCED</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">// VISUAL INTEL</span>
+    <h2 class="section-title">Inside The <span>Cyber World</span></h2>
+    <p class="section-sub">Real operations, real labs, real environments.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Cybersecurity Lab">
+      <div class="gal-overlay"><span>// DARK OPS LAB</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80" alt="Hacking">
+      <div class="gal-overlay"><span>// PENETRATION TEST</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Code">
+      <div class="gal-overlay"><span>// BINARY ANALYSIS</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80" alt="Matrix">
+      <div class="gal-overlay"><span>// NETWORK MONITOR</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="Security">
+      <div class="gal-overlay"><span>// INCIDENT RESPONSE</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIO SECTION -->
+<section id="audio-section">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">// AUDIO INTEL</span>
+    <h2 class="section-title">Cyber<span>Cast</span> Podcast</h2>
+    <p class="section-sub">Stay sharp with our weekly cybersecurity podcast. Expert interviews, threat reports, and industry news.</p>
+  </div>
+  <div class="audio-player reveal">
+    <div class="ap-title">EP.42 — The Art of Social Engineering</div>
+    <div class="ap-sub">CyberShield Podcast · 48:22 · Weekly Series</div>
+    <div class="ap-controls">
+      <button class="ap-btn" onclick="togglePlay()" id="play-btn">▶</button>
+      <div class="ap-bar" onclick="seekAudio(event)">
+        <div class="ap-progress" id="progress-bar"></div>
+      </div>
+      <span class="ap-time" id="audio-time">0:00 / 48:22</span>
+    </div>
+    <audio id="main-audio">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">// ARSENAL</span>
+    <h2 class="section-title">Security <span>Tools</span> We Cover</h2>
+    <p class="section-sub">Industry-standard tools used by professional red and blue teams globally.</p>
+  </div>
+  <div class="tools-grid reveal">
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Kali Linux</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Metasploit</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Wireshark</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Nmap</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Burp Suite</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Aircrack-ng</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Hashcat</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">John the Ripper</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Ghidra</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Nessus</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Snort</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Splunk</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Cobalt Strike</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">OWASP ZAP</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">Volatility</span></div>
+    <div class="tool-item"><div class="tool-dot"></div><span class="tool-name">OpenVAS</span></div>
+  </div>
+</section>
+
+<!-- TERMINAL -->
+<section id="terminal-section">
+  <div class="reveal">
+    <span class="section-tag">// LIVE DEMO</span>
+    <h2 class="section-title">Terminal <span>Simulation</span></h2>
+    <p class="section-sub">Experience what real cybersecurity operations look like.</p>
+  </div>
+  <div class="terminal reveal">
+    <div class="terminal-bar">
+      <div class="tb-dot red"></div>
+      <div class="tb-dot yellow"></div>
+      <div class="tb-dot green"></div>
+      <span style="font-family:var(--font-mono);font-size:0.78rem;color:var(--muted);margin-left:8px;">kali@cybershield:~</span>
+    </div>
+    <div class="terminal-body">
+      <pre id="terminal-text"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ADSENSE -->
+<div class="ad-banner">
+  <span class="ad-label">// SPONSORED</span>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-1030876896435364"
+       data-ad-slot="9183671396"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="reveal">
+    <span class="section-tag">// JOIN THE NETWORK</span>
+    <h2 class="section-title">Stay <span>One Step Ahead</span></h2>
+    <p class="section-sub">Get weekly threat intelligence, tutorials, and tools delivered directly to your inbox. No spam — ever.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="your@email.com" id="nl-email">
+      <button class="btn-primary" onclick="subscribe()">SUBSCRIBE</button>
+    </div>
+    <p id="nl-msg" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--neon);margin-top:12px;display:none;">✓ YOU'RE IN. CHECK YOUR INBOX.</p>
+  </div>
+</section>
+
+<!-- FOLLOW US -->
+<section id="follow">
+  <div class="reveal">
+    <span class="section-tag">// COMMUNITY</span>
+    <h2 class="section-title">Join The <span>Movement</span></h2>
+    <p class="section-sub">Follow us for daily cybersecurity tips, tutorials, and news across our platforms.</p>
+  </div>
+  <div class="social-cards reveal">
+    <a href="https://www.youtube.com/@Roshab13" target="_blank" class="social-card yt-card">
+      <div class="social-icon">📺</div>
+      <div class="social-name">YOUTUBE</div>
+      <div class="social-handle">@Roshab13</div>
+      <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);margin-top:4px;">Tutorials & Labs</div>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61578489512767" target="_blank" class="social-card fb-card">
+      <div class="social-icon">👥</div>
+      <div class="social-name">FACEBOOK</div>
+      <div class="social-handle">CyberShield Pro</div>
+      <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);margin-top:4px;">Community & News</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">CYBER<span>SHIELD</span></div>
+      <p>Your premier destination for cybersecurity education, tools, and community. Learn. Hack. Protect.</p>
+      <div style="margin-top:20px;display:flex;gap:14px;">
+        <a href="https://www.youtube.com/@Roshab13" target="_blank" style="color:var(--neon2);font-family:var(--font-mono);font-size:0.75rem;text-decoration:none;">YouTube ↗</a>
+        <a href="https://www.facebook.com/profile.php?id=61578489512767" target="_blank" style="color:#1877f2;font-family:var(--font-mono);font-size:0.75rem;text-decoration:none;">Facebook ↗</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>COURSES</h4>
+      <ul>
+        <li><a href="#topics">Ethical Hacking</a></li>
+        <li><a href="#topics">Network Security</a></li>
+        <li><a href="#topics">Web App Security</a></li>
+        <li><a href="#topics">Malware Analysis</a></li>
+        <li><a href="#topics">Digital Forensics</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>COMPANY</h4>
+      <ul>
+        <li><a href="#" onclick="openModal('about')">About Us</a></li>
+        <li><a href="#" onclick="openModal('contact')">Contact Us</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#follow">Community</a></li>
+        <li><a href="#tools">Tools</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <ul>
+        <li><a href="#" onclick="openModal('privacy')">Privacy Policy</a></li>
+        <li><a href="#" onclick="openModal('terms')">Terms & Conditions</a></li>
+        <li><a href="#" onclick="openModal('privacy')">Cookie Policy</a></li>
+        <li><a href="#" onclick="openModal('terms')">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Footer AdSense -->
+  <div style="text-align:center;margin-bottom:30px;">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-1030876896435364"
+         data-ad-slot="9183671396"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CyberShield Pro. All rights reserved. Educational purposes only.</p>
+    <div class="footer-links">
+      <a href="#" onclick="openModal('privacy')">Privacy</a>
+      <a href="#" onclick="openModal('terms')">Terms</a>
+      <a href="#" onclick="openModal('contact')">Contact</a>
+      <a href="#" onclick="openModal('about')">About</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODALS -->
+<!-- About Us -->
+<div class="modal" id="modal-about">
+  <button class="modal-close" onclick="closeModal('about')">✕ CLOSE</button>
+  <div class="modal-content">
+    <h1>ABOUT US</h1>
+    <span class="modal-date">CyberShield Pro // Est. 2023</span>
+    <p>CyberShield Pro is a cutting-edge cybersecurity education platform founded by ethical hackers, security researchers, and educators. Our mission is simple: make world-class cybersecurity education accessible to everyone — from curious beginners to seasoned professionals.</p>
+    <h2>OUR MISSION</h2>
+    <p>We believe that understanding how attacks work is the foundation of building strong defenses. Our curriculum is designed by industry professionals with real-world experience in red team operations, incident response, malware analysis, and more.</p>
+    <h2>WHAT WE OFFER</h2>
+    <ul>
+      <li>200+ hands-on cybersecurity tutorials and labs</li>
+      <li>Weekly threat intelligence and news</li>
+      <li>Tool guides and practical walkthroughs</li>
+      <li>Community forums and expert mentorship</li>
+      <li>YouTube channel with free educational content</li>
+    </ul>
+    <h2>OUR COMMUNITY</h2>
+    <p>With over 50,000 students worldwide, CyberShield Pro has built one of the most active cybersecurity learning communities online. Join us on YouTube at <a href="https://www.youtube.com/@Roshab13" target="_blank">@Roshab13</a> and on <a href="https://www.facebook.com/profile.php?id=61578489512767" target="_blank">Facebook</a>.</p>
+    <h2>DISCLAIMER</h2>
+    <p>All content on CyberShield Pro is strictly for educational and ethical purposes. We do not encourage or condone any illegal activity. Always obtain proper authorization before testing systems.</p>
+  </div>
+</div>
+
+<!-- Contact Us -->
+<div class="modal" id="modal-contact">
+  <button class="modal-close" onclick="closeModal('contact')">✕ CLOSE</button>
+  <div class="modal-content">
+    <h1>CONTACT US</h1>
+    <span class="modal-date">We respond within 24–48 hours</span>
+    <p>Have a question, partnership inquiry, or just want to say hello? We'd love to hear from you.</p>
+    <h2>REACH US</h2>
+    <ul>
+      <li>📧 Email: contact@cybershieldpro.com</li>
+      <li>📺 YouTube: <a href="https://www.youtube.com/@Roshab13" target="_blank">@Roshab13</a></li>
+      <li>👥 Facebook: <a href="https://www.facebook.com/profile.php?id=61578489512767" target="_blank">CyberShield Pro</a></li>
+    </ul>
+    <h2>CONTACT FORM</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;">
+      <input type="text" placeholder="Your Name" style="background:rgba(0,255,231,0.05);border:1px solid rgba(0,255,231,0.2);border-radius:3px;padding:12px 16px;color:var(--text);font-family:var(--font-mono);font-size:0.88rem;outline:none;">
+      <input type="email" placeholder="Your Email" style="background:rgba(0,255,231,0.05);border:1px solid rgba(0,255,231,0.2);border-radius:3px;padding:12px 16px;color:var(--text);font-family:var(--font-mono);font-size:0.88rem;outline:none;">
+      <textarea placeholder="Your Message" rows="5" style="background:rgba(0,255,231,0.05);border:1px solid rgba(0,255,231,0.2);border-radius:3px;padding:12px 16px;color:var(--text);font-family:var(--font-mono);font-size:0.88rem;outline:none;resize:vertical;"></textarea>
+      <button class="btn-primary" style="align-self:flex-start;" onclick="alert('Message sent! We will get back to you soon.')">SEND MESSAGE</button>
+    </div>
+    <h2>BUSINESS HOURS</h2>
+    <p>Monday – Friday: 9:00 AM – 6:00 PM (UTC+5:45)<br>Saturday: 10:00 AM – 2:00 PM<br>Sunday: Closed</p>
+  </div>
+</div>
+
+<!-- Privacy Policy -->
+<div class="modal" id="modal-privacy">
+  <button class="modal-close" onclick="closeModal('privacy')">✕ CLOSE</button>
+  <div class="modal-content">
+    <h1>PRIVACY POLICY</h1>
+    <span class="modal-date">Last Updated: January 1, 2025</span>
+    <p>CyberShield Pro ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information about you when you use our website.</p>
+    <h2>INFORMATION WE COLLECT</h2>
+    <ul>
+      <li><strong>Personal Information:</strong> Name, email address when you subscribe or contact us.</li>
+      <li><strong>Usage Data:</strong> Pages visited, time spent, browser type, device information.</li>
+      <li><strong>Cookies:</strong> We use cookies to improve user experience and analyze traffic.</li>
+    </ul>
+    <h2>HOW WE USE YOUR INFORMATION</h2>
+    <ul>
+      <li>To provide and improve our services</li>
+      <li>To send newsletters and educational content (with your consent)</li>
+      <li>To respond to your inquiries</li>
+      <li>To analyze website performance via Google Analytics</li>
+      <li>To display relevant advertisements via Google AdSense</li>
+    </ul>
+    <h2>GOOGLE ADSENSE & THIRD PARTIES</h2>
+    <p>We use Google AdSense to display advertisements. Google uses cookies to serve ads based on your prior visits. You can opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p>
+    <h2>DATA SHARING</h2>
+    <p>We do not sell your personal data. We may share data with trusted third-party services (Google Analytics, AdSense, email providers) solely to operate our platform.</p>
+    <h2>YOUR RIGHTS</h2>
+    <p>You have the right to access, correct, or delete your personal data. Contact us at contact@cybershieldpro.com for any privacy-related requests.</p>
+    <h2>CONTACT</h2>
+    <p>For privacy concerns: roshabbhandari1334@gmail.com</p>
+  </div>
+</div>
+
+<!-- Terms & Conditions -->
+<div class="modal" id="modal-terms">
+  <button class="modal-close" onclick="closeModal('terms')">✕ CLOSE</button>
+  <div class="modal-content">
+    <h1>TERMS & CONDITIONS</h1>
+    <span class="modal-date">Last Updated: January 1, 2025</span>
+    <p>Welcome to CyberShield Pro. By accessing this website, you agree to these Terms and Conditions. Please read them carefully.</p>
+    <h2>1. EDUCATIONAL PURPOSE ONLY</h2>
+    <p>All content provided on CyberShield Pro is strictly for educational and ethical purposes. Users must not apply any knowledge gained from this platform to conduct unauthorized access to computer systems, networks, or data.</p>
+    <h2>2. ACCEPTABLE USE</h2>
+    <ul>
+      <li>You agree to use this website lawfully and ethically.</li>
+      <li>You must not attempt to disrupt or damage our services.</li>
+      <li>You must be at least 13 years of age to use this site.</li>
+      <li>You must comply with all applicable local and international laws.</li>
+    </ul>
+    <h2>3. INTELLECTUAL PROPERTY</h2>
+    <p>All content, including tutorials, videos, graphics, and text, is the intellectual property of CyberShield Pro unless otherwise stated. Unauthorized reproduction is prohibited.</p>
+    <h2>4. DISCLAIMER OF WARRANTIES</h2>
+    <p>CyberShield Pro provides content "as is" without warranties of any kind. We do not guarantee the accuracy or completeness of any information on this site.</p>
+    <h2>5. LIMITATION OF LIABILITY</h2>
+    <p>CyberShield Pro shall not be liable for any direct, indirect, or consequential damages arising from the use of information on this website.</p>
+    <h2>6. THIRD-PARTY LINKS</h2>
+    <p>We may link to third-party websites. We are not responsible for the content or privacy practices of those sites.</p>
+    <h2>7. CHANGES TO TERMS</h2>
+    <p>We reserve the right to update these terms at any time. Continued use of the site constitutes acceptance of the updated terms.</p>
+    <h2>8. CONTACT</h2>
+    <p>For legal inquiries: contact@cybershieldpro.com</p>
+  </div>
+</div>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursor-dot');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX - 9 + 'px';
+  cursor.style.top = e.clientY - 9 + 'px';
+  cursorDot.style.left = e.clientX + 'px';
+  cursorDot.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.topic-card,.tool-item').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+  el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+});
+
+// MATRIX RAIN
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ{}[]|<>/?;:@#$%^&*';
+const fontSize = 13;
+let cols = Math.floor(canvas.width / fontSize);
+let drops = Array(cols).fill(1);
+function drawMatrix(){
+  ctx.fillStyle = 'rgba(2,8,16,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#00ffe7';
+  ctx.font = fontSize + 'px Share Tech Mono';
+  drops.forEach((y,i) => {
+    const char = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(char, i*fontSize, y*fontSize);
+    if(y*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  });
+}
+setInterval(drawMatrix, 50);
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, {threshold:0.1});
+reveals.forEach(r => observer.observe(r));
+
+// COUNTER ANIMATION
+function animateCounters(){
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let count = 0;
+    const step = Math.ceil(target/80);
+    const timer = setInterval(() => {
+      count = Math.min(count+step, target);
+      el.textContent = count.toLocaleString()+(el.dataset.target==='99'?'%':'+');
+      if(count >= target) clearInterval(timer);
+    }, 20);
+  });
+}
+const statsObserver = new IntersectionObserver(entries => {
+  if(entries[0].isIntersecting){ animateCounters(); statsObserver.disconnect(); }
+},{ threshold:0.5 });
+const statsBar = document.querySelector('.stats-bar');
+if(statsBar) statsObserver.observe(statsBar);
+
+// TERMINAL ANIMATION
+const termLines = [
+  {t:'cmd', text:'$ nmap -sV -O 192.168.1.1'},
+  {t:'out', text:'Starting Nmap 7.94 ( https://nmap.org )'},
+  {t:'out', text:'Scanning 192.168.1.1 [1000 ports]'},
+  {t:'success', text:'PORT     STATE SERVICE  VERSION'},
+  {t:'success', text:'22/tcp   open  ssh      OpenSSH 8.9'},
+  {t:'success', text:'80/tcp   open  http     Apache 2.4.52'},
+  {t:'warn',    text:'443/tcp  open  https    [VULN: CVE-2023-0286]'},
+  {t:'out', text:'3306/tcp open  mysql    MySQL 8.0.32'},
+  {t:'cmd', text:'$ searchsploit Apache 2.4.52'},
+  {t:'warn',    text:'[+] Exploit found: Remote Code Execution'},
+  {t:'success', text:'[✓] Generating payload...'},
+  {t:'success', text:'[✓] Session opened: meterpreter x64/linux'},
+];
+let lineIdx = 0;
+const termEl = document.getElementById('terminal-text');
+function typeTermLine(){
+  if(lineIdx >= termLines.length){ lineIdx=0; termEl.innerHTML=''; setTimeout(typeTermLine, 2000); return; }
+  const line = termLines[lineIdx];
+  const span = document.createElement('span');
+  span.className = 't-'+line.t;
+  span.textContent = line.text + '\n';
+  termEl.appendChild(span);
+  lineIdx++;
+  termEl.scrollTop = termEl.scrollHeight;
+  setTimeout(typeTermLine, 600 + Math.random()*400);
+}
+setTimeout(typeTermLine, 1500);
+
+// AUDIO PLAYER
+const audio = document.getElementById('main-audio');
+const progressBar = document.getElementById('progress-bar');
+const audioTime = document.getElementById('audio-time');
+let playing = false;
+function togglePlay(){
+  const btn = document.getElementById('play-btn');
+  if(playing){ audio.pause(); btn.textContent='▶'; playing=false; }
+  else{ audio.play().catch(()=>{}); btn.textContent='⏸'; playing=true; }
+}
+audio.addEventListener('timeupdate', () => {
+  if(audio.duration){
+    const pct = (audio.currentTime/audio.duration)*100;
+    progressBar.style.width = pct+'%';
+    const fmt = t => `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
+    audioTime.textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
+  }
+});
+function seekAudio(e){
+  if(audio.duration){
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left)/rect.width;
+    audio.currentTime = pct*audio.duration;
+  }
+}
+
+// NEWSLETTER
+function subscribe(){
+  const email = document.getElementById('nl-email').value;
+  if(email && email.includes('@')){
+    document.getElementById('nl-msg').style.display='block';
+    document.getElementById('nl-email').value='';
+  } else {
+    alert('Please enter a valid email address.');
+  }
+}
+
+// MODALS
+function openModal(name){
+  document.getElementById('modal-'+name).classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeModal(name){
+  document.getElementById('modal-'+name).classList.remove('active');
+  document.body.style.overflow='';
+}
+
+// HAMBURGER MENU
+function toggleMenu(){
+  const menu = document.getElementById('nav-menu');
+  if(menu.style.display==='flex'){
+    menu.style.display='none';
+  } else {
+    menu.style.display='flex';
+    menu.style.flexDirection='column';
+    menu.style.position='absolute';
+    menu.style.top='70px';
+    menu.style.left='0';
+    menu.style.width='100%';
+    menu.style.background='rgba(2,8,16,0.98)';
+    menu.style.padding='20px 5%';
+    menu.style.borderBottom='1px solid rgba(0,255,231,0.12)';
+  }
+}
+
+// MODAL CLOSE ON OUTSIDE CLICK
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if(e.target === modal){
+      const id = modal.id.replace('modal-','');
+      closeModal(id);
+    }
+  });
+});
+</script>
+</body>
+</html>
