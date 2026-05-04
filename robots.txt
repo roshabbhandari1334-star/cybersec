@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://cybersec-tazj.vercel.app/sitemap.xml
